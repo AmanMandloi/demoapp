@@ -1,26 +1,22 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Provider, connect} from 'react-redux';
+import AppStore from './AppStore';
+import AppListing from './Components/AppListing'
+import { BrowserRouter } from 'react-router-dom';
+
 
 function App() {
+  const mapStateToProps = (state) =>({});
+  const mapDispatchToProps = (dispatch) => ({});
+  const RouteApp = connect(mapStateToProps, mapDispatchToProps)(AppListing);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={AppStore}>
+      <BrowserRouter>
+        <RouteApp />
+      </BrowserRouter>
+    </Provider>
+
   );
 }
-
 export default App;
