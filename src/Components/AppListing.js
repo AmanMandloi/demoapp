@@ -11,7 +11,7 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { loadCSS } from 'fg-loadcss';
 import {
-  PieChart, Pie,
+  PieChart, Pie, Cell
 } from 'recharts';
 
 import '../App.css';
@@ -19,10 +19,11 @@ import CardComponent from './cards';
 import {useStyles} from '../style';
 import {getItems} from './Action';
 
-const data02 = [
+const data = [
 				 { name: 'Mutual Funds', value: 400 },
 				 { name: 'ETFs', value: 200 },
 				]
+const COLORS = ['rgb(3, 169, 244)', 'rgb(174, 156, 70)'];
 
 
 function AppListing(props) {
@@ -71,11 +72,39 @@ function AppListing(props) {
 	                  <h4> Portfolio</h4>
 	                  <h6> Asset Wise</h6>
 	                </Grid>
-	                  <PieChart width={300} height={300}>
-	                    <Pie data={data02} dataKey="value" activeIndex = {0} nameKey="name" legendType="square" cx={100} cy={100} innerRadius={70} outerRadius={90} fill="#82ca9d"  labelLine={true} />
+	                  <PieChart width={300} height={200}>
+	                    <Pie 
+	                    	data={data} 
+	                    	dataKey="value" 
+	                    	activeIndex = {0} 
+	                    	nameKey="name" 
+	                    	cx={100} 
+	                    	cy={100} 
+	                    	innerRadius={70} 
+	                    	outerRadius={90} 
+	                    	fill="#82ca9d"  
+	                    	labelLine={true} 
+	                    	legendType='square'
+	                    	>
+	                    	{
+	                    		data.map((entry, index) => <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />)
+	                    	}
+
+	                    </Pie>
+
 	                  </PieChart>
-	  			
-	              </Grid>
+	                  <Grid container   direction="row" justify="center" spacing={0}>
+	                  	<Grid item xs={6}  >
+	                  	</Grid>
+		               <Grid item xs={6} sm={6}  >
+		               	<div className={classes.chart_mention}>
+		               		<div className={classes.chart_mention_title}><div className={classes.chart_mention_title1}></div> Mutual Funds </div>
+		               		<div className={classes.chart_mention_title}><div className={classes.chart_mention_title2}></div> ETFs </div>
+		               		</div>  
+		                </Grid>
+		              </Grid>	                  	
+	                  </Grid>
+
 	            </Paper>
 	          </Grid>
 	        </Grid>

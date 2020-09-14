@@ -145,6 +145,30 @@ const useStyles = makeStyles((theme) => ({
     display: 'inline-flex',
     justifyContent: 'space-between',
     // padding: '11px',
+  },
+  chart_mention:{
+    flex: 'auto',
+    alignItems: 'baseline',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'inherit',
+  },
+  chart_mention_title1:{
+    height: '13px',
+    margin: '2px',
+    width: '17px',
+    marginRight:'4px',
+    background: 'rgb(3, 169, 244)',
+  },
+  chart_mention_title2:{
+    height: '13px',
+    margin: '2px',
+    marginRight:'4px',
+    width: '17px',
+    background: 'rgb(174, 156, 70)',
+  },
+  chart_mention_title:{
+    display:'flex',
   }
 
 
